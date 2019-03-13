@@ -2,9 +2,10 @@
 #include <QWidget>
 #include <QPalette>
 
-void WindowAssistant::setBackgroundColor(QWidget* window, int color)
+void WindowAssistant::setBackgroundColor(QWidget* window, const QColor& color)
 {
-	auto palette = window->palette();
-	palette.setColor(QPalette::Background, color);
-	window->setPalette(palette);
+	window->setAutoFillBackground(true);
+	auto p = window->palette();
+	p.setColor(QPalette::Background, color);
+	window->setPalette(p);
 }

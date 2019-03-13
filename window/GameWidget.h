@@ -10,6 +10,8 @@ class GameWidget : public QWidget
 		~GameWidget();
 	public:
 		void initialize();
+	protected:
+		void paintEvent(QPaintEvent*);
 
 };
 #endif//__GAMEWIDGET__H

@@ -15,6 +15,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::initialize()
 {
+	setWindowFlags(windowFlags() &~ Qt::WindowMinMaxButtonsHint);
 	createMenus();
 	createStatusbar();
 }
