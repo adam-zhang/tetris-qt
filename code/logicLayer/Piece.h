@@ -7,17 +7,9 @@
 typedef std::array<std::array<int, 4>, 4> Shape;
 typedef std::array<std::array<int, 30>, 45> BoxMap;
 
-class GameShape
-{
-	PROPERTY(int, width, setWidth);
-	PROPERTY(int, height, setHeight );
-	//PROPERTY(Shape, shape, setShape);
-	private:
-		Shape shape_;
-	public:
-		Shape& shape()
-		{ return  shape_;}
-};
+//class GameShape
+//{
+//};
 
 class Piece
 {
@@ -49,23 +41,13 @@ class Piece
 		bool isaggin();
 		bool exspr();
 	public:
-		enum
-		{
-			TShape,
-			SShape,
-			ZShape,
-			JShape,
-			LShape,
-			IShape,
-			OShape,
-		};
 	private:
-		std::shared_ptr<GameShape> makeIShape();
-		std::shared_ptr<GameShape> makeSShape();
-		std::shared_ptr<GameShape> makeZShape();
-		std::shared_ptr<GameShape> makeJShape();
-		std::shared_ptr<GameShape> makeLShape();
-		std::shared_ptr<GameShape> makeTShape();
-		std::shared_ptr<GameShape> makeOShape();
+		//std::shared_ptr<GameShape> makeIShape();
+		//std::shared_ptr<GameShape> makeSShape();
+		//std::shared_ptr<GameShape> makeZShape();
+		//std::shared_ptr<GameShape> makeJShape();
+		//std::shared_ptr<GameShape> makeLShape();
+		//std::shared_ptr<GameShape> makeTShape();
+		//std::shared_ptr<GameShape> makeOShape();
 };
 #endif//__PIECE__H

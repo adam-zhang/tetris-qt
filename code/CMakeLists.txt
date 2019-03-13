@@ -10,6 +10,8 @@ set(sources main.cpp
 	GameWidget.cpp
 	InformationWidget.cpp
 	WindowAssistant.cpp
+	logicLayer/GameShape.cpp
+	logicLayer/Producer.cpp
 	)
 set(moc_headers MainWindow.h
 	MainWidget.h
