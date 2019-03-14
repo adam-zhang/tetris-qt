@@ -12,6 +12,6 @@ public:
 	Producer();
 	~Producer();
 public:
-	std::shared_ptr<GameShape> getGameShape();
+	std::shared_ptr<GameShape> getGameShape(int);
 };
 #endif//__PRODUCER__H

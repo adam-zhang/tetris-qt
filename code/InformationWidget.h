@@ -1,7 +1,11 @@
 #ifndef __INFORMATIONWIDGET__H
 #define __INFORMATIONWIDGET__H
 
+#include "../tools/Properties.h"
 #include <QWidget>
+#include <memory>
+
+class GameShape;
 
 class InformationWidget : public QWidget
 {
@@ -12,5 +16,8 @@ class InformationWidget : public QWidget
 		void paintEvent(QPaintEvent*);
 	private:
 		void initialize();
+	public:
+		void updateWindow();
+		PROPERTY(std::shared_ptr<GameShape>, shape, setShape);
 };
 #endif//__INFORMATIONWIDGET__H

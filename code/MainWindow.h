@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 class QTimer;
+class MainWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -36,5 +37,6 @@ class MainWindow : public QMainWindow
 		void startGame();
 	private:
 		QTimer* timer_;
+		MainWidget* mainWidget_;
 };
 #endif//__MAINWINDOW__H

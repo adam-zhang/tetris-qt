@@ -102,9 +102,9 @@ static shared_ptr<GameShape> makeOShape()
 }
 
 
-shared_ptr<GameShape> Producer::getGameShape()
+shared_ptr<GameShape> Producer::getGameShape(int shape)
 {
-	int shape = rand() % 7;
+	//int shape = rand() % 7;
 	switch(shape)
 	{
 		case GameShape::IShape: return makeIShape();

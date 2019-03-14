@@ -12,6 +12,8 @@ class GameWidget : public QWidget
 		void initialize();
 	protected:
 		void paintEvent(QPaintEvent*);
+	public:
+		void updateWindow();
 
 };
 #endif//__GAMEWIDGET__H

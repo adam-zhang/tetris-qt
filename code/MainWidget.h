@@ -15,7 +15,8 @@ class MainWidget : public QWidget
 	private:
 		void initialize();
 		void createWidgets();
-
+	public:
+		void updateWindow();
 	private:
 		InformationWidget* informationWidget_;
 		GameWidget* gameWidget_;

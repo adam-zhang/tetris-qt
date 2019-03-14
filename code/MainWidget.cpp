@@ -31,8 +31,10 @@ void MainWidget::createWidgets()
 	setFixedSize(20 * 10 + 100, 20 * 18);
 	auto layout = new QHBoxLayout(this);
 	auto splitter = new QSplitter;
-	splitter->addWidget(new GameWidget);
-	splitter->addWidget(new InformationWidget);
+	gameWidget_ = new GameWidget;
+	splitter->addWidget(gameWidget_);
+	informationWidget_ = new InformationWidget;
+	splitter->addWidget(informationWidget_);
 	auto handle = splitter->handle(1);
 	handle->setDisabled(true);
 	splitter->setHandleWidth(1);
@@ -40,3 +42,8 @@ void MainWidget::createWidgets()
 	layout->addWidget(splitter);
 }
 
+void MainWidget::updateWindow()
+{
+	informationWidget_->updateWindow();
+	gameWidget_->updateWindow();
+}

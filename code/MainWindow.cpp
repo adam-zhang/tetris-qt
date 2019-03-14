@@ -20,6 +20,8 @@ MainWindow::~MainWindow()
 void MainWindow::initialize()
 {
 	setWindowFlags(windowFlags() &~ Qt::WindowMinMaxButtonsHint);
+	mainWidget_ = new MainWidget;
+	setCentralWidget(mainWidget_);
 	createMenus();
 	createStatusbar();
 	startTimer();
@@ -35,6 +37,7 @@ void MainWindow::startTimer()
 
 void MainWindow::onTimeout()
 {
+	mainWidget_->updateWindow();
 }
 
 void MainWindow::startGame()
@@ -67,7 +70,6 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
 
 void MainWindow::createMenus()
 {
-	setCentralWidget(new MainWidget(this));
 	createFileMenu();
 	createGameMenu();
 	//createEditMenu();

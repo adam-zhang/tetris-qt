@@ -38,3 +38,7 @@ void GameWidget::paintEvent(QPaintEvent* event)
 	QPainter painter(this);
 	paintGrid(painter, event->rect());
 }
+
+void GameWidget::updateWindow()
+{
+}
