@@ -30,13 +30,7 @@ class MainWidget : public QWidget
 		GameWidget* gameWidget()
 		{ return gameWidget_;}
 	private slots:
-		void onKeyPress(QKeyEvent*);
-	private:
-		void rotate();
-		void speed();
-		void moveLeft();
-		void moveRight();
-		void startGame();
+	protected:
 };
 
 #endif//__MAINWIDGET__H

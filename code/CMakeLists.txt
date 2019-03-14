@@ -11,6 +11,7 @@ set(sources main.cpp
 	GameWidget.cpp
 	InformationWidget.cpp
 	WindowAssistant.cpp
+	AboutDialog.cpp
 	LogicalLayer/GameShape.cpp
 	LogicalLayer/Producer.cpp
 	LogicalLayer/Game.cpp
@@ -19,6 +20,7 @@ set(moc_headers MainWindow.h
 	MainWidget.h
 	GameWidget.h
 	InformationWidget.h
+	AboutDialog.h
 	LogicalLayer/Game.h
 	)
 set(headers ${moc_headers})

@@ -25,5 +25,10 @@ public:
 	void moveLeft();
 	void moveRight();
 
+	PROPERTY(int, candidate, setCandidate);
+	PROPERTY(int, current, setCurrent);
+private:
+	int getShape();
+
 };
 #endif//__GAME__H
