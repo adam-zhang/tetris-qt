@@ -1,9 +1,10 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0.2)
 project (qt4-test)
 set(CMAKE_BUILD_TYPE Release)
+#set(CMAKE_AUTOMOC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 find_package (Qt4 REQUIRED)
-#include_directories($ENV{QT4}/include/ $ENV{QT4}/include/QtGui)
-link_directories($ENV{QT4}/lib)
+#link_directories($ENV{QT4}/lib)
 set(sources main.cpp
 	MainWindow.cpp
 	MainWidget.cpp
@@ -12,14 +13,15 @@ set(sources main.cpp
 	WindowAssistant.cpp
 	logicLayer/GameShape.cpp
 	logicLayer/Producer.cpp
+	logicLayer/Game.cpp
 	)
 set(moc_headers MainWindow.h
 	MainWidget.h
 	GameWidget.h
 	InformationWidget.h
+	logicLayer/Game.h
 	)
 set(headers ${moc_headers})
-QT4_WRAP_CPP (mocs ${project_HEADERS})
-ADD_EXECUTABLE (${PROJECT_NAME} ${sources} ${mocs})
+QT4_WRAP_CPP(mocs ${moc_headers})
+ADD_EXECUTABLE (${PROJECT_NAME} ${sources} ${mocs} )
 TARGET_LINK_LIBRARIES (${PROJECT_NAME} Qt4::QtCore Qt4::QtGui winmm imm32 ws2_32)
-
