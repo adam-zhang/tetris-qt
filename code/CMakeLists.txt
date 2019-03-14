@@ -11,15 +11,15 @@ set(sources main.cpp
 	GameWidget.cpp
 	InformationWidget.cpp
 	WindowAssistant.cpp
-	logicLayer/GameShape.cpp
-	logicLayer/Producer.cpp
-	logicLayer/Game.cpp
+	LogicalLayer/GameShape.cpp
+	LogicalLayer/Producer.cpp
+	LogicalLayer/Game.cpp
 	)
 set(moc_headers MainWindow.h
 	MainWidget.h
 	GameWidget.h
 	InformationWidget.h
-	logicLayer/Game.h
+	LogicalLayer/Game.h
 	)
 set(headers ${moc_headers})
 QT4_WRAP_CPP(mocs ${moc_headers})

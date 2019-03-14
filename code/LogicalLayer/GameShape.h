@@ -1,6 +1,6 @@
 #ifndef __GAMESHAPE__H
 #define __GAMESHAPE__H
-#include "Properties.h"
+#include "../tools/Properties.h"
 #include "../tools/tool.h"
 
 class GameShape

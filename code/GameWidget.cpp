@@ -26,9 +26,9 @@ void paintGrid(QPainter& painter, const QRect& rect)
 {
 	QPen pen(Qt::white);
 	painter.setPen(pen);
-	for(int i = 10; i < rect.height(); i += 10)
+	for(int i = 20; i < rect.height(); i += 20)
 		painter.drawLine(0, i, rect.width(), i);
-	for(int i = 10; i < rect.width(); i += 10)
+	for(int i = 20; i < rect.width(); i += 20)
 		painter.drawLine(i, 0, i, rect.height());
 
 }	
