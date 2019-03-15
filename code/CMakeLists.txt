@@ -13,6 +13,7 @@ set(sources main.cpp
 	Painter.cpp
 	Next.cpp
 	Score.cpp
+	AuthorWidget.cpp
 	LogicalLayer/GameShape.cpp
 	LogicalLayer/Producer.cpp
 	LogicalLayer/Game.cpp
@@ -23,6 +24,7 @@ set(moc_headers
 	GameWidget.h
 	InformationWidget.h
 	AboutDialog.h
+	AuthorWidget.h
 	)
 set(headers ${moc_headers})
 QT4_WRAP_CPP(mocs ${moc_headers})

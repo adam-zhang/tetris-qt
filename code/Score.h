@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+class QLabel;
+
 class Score : public QWidget
 {
 public:
@@ -10,5 +12,9 @@ public:
 	~Score();
 private:
 	void initialize();
+private:
+	QLabel* label_;
+private:
+	void setScore(int);
 };
 #endif//__SCORE__H

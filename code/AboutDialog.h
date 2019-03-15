@@ -4,11 +4,11 @@
 
 class AboutDialog : public QDialog
 {
-	Q_OBJECT;
 public:
-	AboutDialog();
+	explicit AboutDialog(QWidget* parent );
 	~AboutDialog();
-public:
-
+private:
+	void initialize();
+	void createWidgets();
 };
 #endif//__ABOUTDIALOG__H

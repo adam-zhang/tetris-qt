@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "MainWidget.h"
+#include "AboutDialog.h"
 #include "LogicalLayer/Game.h"
 #include <QMenuBar>
 #include <QMessageBox>
@@ -88,6 +89,8 @@ void MainWindow::createHelpMenu()
 
 void MainWindow::onAbout()
 {
+	AboutDialog dialog(this);
+	dialog.exec();
 }
 
 void MainWindow::createGameMenu()

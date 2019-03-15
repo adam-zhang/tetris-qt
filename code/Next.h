@@ -8,6 +8,6 @@ public:
 	explicit Next(QWidget* parent = 0);
 	~Next();
 public:
-
+	void updateWindow();
 };
 #endif//__NEXT__H

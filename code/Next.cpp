@@ -8,3 +8,8 @@ Next::Next(QWidget* parent)
 Next::~Next()
 {
 }
+
+void Next::updateWindow()
+{
+	
+}
