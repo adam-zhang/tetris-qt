@@ -3,8 +3,11 @@
 #include "LogicalLayer/Game.h"
 #include "LogicalLayer/Producer.h"
 #include "Painter.h"
+#include "Next.h"
+#include "Score.h"
 #include <QPainter>
 #include <QPaintEvent>
+#include <QHBoxLayout>
 
 InformationWidget::InformationWidget(QWidget* parent)
 	: QWidget(parent)
@@ -28,12 +31,20 @@ void InformationWidget::paintEvent(QPaintEvent* event)
 
 void InformationWidget::initialize()
 {
-	WindowAssistant::setBackgroundColor(this, Qt::black);
+	WindowAssistant::setBackgroundColor(this, Qt::blue);
+	createWidgets();
+}
+
+void InformationWidget::createWidgets()
+{
+	auto layout = new QHBoxLayout(this);
+	layout->addWidget(new Next);
+	layout->addWidget(new Score);
 }
 
 void InformationWidget::updateWindow()
 {
-	auto shape = Game::instance().candidate();
-	setShape(Producer::instance().getGameShape(shape));
-	update();
+	//auto shape = Game::instance().candidate();
+	//setShape(Producer::instance().getGameShape(shape));
+	//update();
 }

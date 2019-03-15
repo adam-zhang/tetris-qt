@@ -16,8 +16,10 @@ class InformationWidget : public QWidget
 		void paintEvent(QPaintEvent*);
 	private:
 		void initialize();
+		void createWidgets();
 	public:
 		void updateWindow();
+
 		PROPERTY(std::shared_ptr<GameShape>, shape, setShape);
 };
 #endif//__INFORMATIONWIDGET__H

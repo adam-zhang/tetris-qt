@@ -11,6 +11,8 @@ set(sources main.cpp
 	WindowAssistant.cpp
 	AboutDialog.cpp
 	Painter.cpp
+	Next.cpp
+	Score.cpp
 	LogicalLayer/GameShape.cpp
 	LogicalLayer/Producer.cpp
 	LogicalLayer/Game.cpp

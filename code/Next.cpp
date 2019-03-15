@@ -1,6 +1,7 @@
 #include "Next.h"
 
-Next::Next()
+Next::Next(QWidget* parent)
+	: QWidget(parent)
 {
 }
 
