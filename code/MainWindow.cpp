@@ -9,6 +9,7 @@
 
 MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent)
+	  , timer_(new QTimer(this))
 {
 	initialize();
 }
@@ -24,26 +25,28 @@ void MainWindow::initialize()
 	setCentralWidget(mainWidget_);
 	createMenus();
 	createStatusbar();
-	startTimer();
-	startGame();
 }
 
 void MainWindow::startTimer()
 {
-	timer_ = new QTimer(this);
 	timer_->setInterval(1000);
 	connect(timer_, SIGNAL(timeout()), this, SLOT(onTimeout()));
+	timer_->start();
 }
 
 void MainWindow::onTimeout()
 {
+	Game::instance().update();
 	mainWidget_->updateWindow();
+	qDebug() << "update mainWidget";
 }
 
 void MainWindow::startGame()
 {
 	Game::instance().run();
+	startTimer();
 }
+
 
 void MainWindow::keyPressEvent(QKeyEvent* event)
 {
@@ -98,12 +101,19 @@ void MainWindow::createGameMenu()
 
 void MainWindow::onStartGame()
 {
+	startGame();
 	qDebug() << "StartGame";
 }
 
 void MainWindow::onStopGame()
 {
+	stopGame();
 	qDebug() << "StopGame";
+}
+
+void MainWindow::stopGame()
+{
+	timer_->stop();
 }
 
 void MainWindow::createFileMenu()

@@ -1,14 +1,12 @@
 #include "Game.h"
+#include "Producer.h"
 #include <QTimer>
 #include <QDebug>
 #include <stdlib.h>
 #include <time.h>
 
 Game::Game()
-	: timer_(new QTimer(this))
 {
-	timer_->setInterval(1000);
-	connect(timer_, SIGNAL(timeout()), this, SLOT(onTimeout()));
 	srand((int)time(0));
 }
 
@@ -18,7 +16,7 @@ Game::~Game()
 
 void Game::run()
 {
-	timer_->start();
+	//timer_->start();
 	setCandidate(getShape());
 	setCurrent(getShape());
 }
@@ -30,12 +28,12 @@ int Game::getShape()
 
 void Game::stop()
 {
-	timer_->stop();
+	//timer_->stop();
 }
 
-void Game::onTimeout()
-{
-}
+//void Game::onTimeout()
+//{
+//}
 
 void Game::rotate()
 {
@@ -51,4 +49,15 @@ void Game::moveLeft()
 
 void Game::moveRight()
 {
+}
+
+void Game::update()
+{
+	setCandidate(Producer::instance().gameShape());
+}
+
+void Game::moveOn()
+{
+	setCurrent(candidate());
+	setCandidate(getShape());
 }

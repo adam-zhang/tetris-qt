@@ -2,6 +2,7 @@
 #include "WindowAssistant.h"
 #include "LogicalLayer/Game.h"
 #include "LogicalLayer/Producer.h"
+#include "Painter.h"
 #include <QPainter>
 #include <QPaintEvent>
 
@@ -17,12 +18,17 @@ InformationWidget::~InformationWidget()
 
 void InformationWidget::paintEvent(QPaintEvent* event)
 {
+	if (!shape())
+		return;
 	QPainter painter(this);
+	auto rect = geometry();
+	painter.drawRect(0, 0, rect.width(), rect.height());
+	Painter::paintShape(painter,  shape());
 }
 
 void InformationWidget::initialize()
 {
-	WindowAssistant::setBackgroundColor(this, Qt::blue);
+	WindowAssistant::setBackgroundColor(this, Qt::black);
 }
 
 void InformationWidget::updateWindow()

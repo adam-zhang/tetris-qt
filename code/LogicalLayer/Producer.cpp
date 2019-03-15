@@ -3,6 +3,7 @@
 #include <cassert>
 #include <stdlib.h>
 #include <time.h>
+#include <QDebug>
 
 using namespace std;
 
@@ -16,6 +17,7 @@ Producer::~Producer()
 {
 }
 
+
 static shared_ptr<GameShape> makeIShape()
 {
 	auto p = make_shared<GameShape>();
@@ -25,6 +27,7 @@ static shared_ptr<GameShape> makeIShape()
 	p->shape()[0][3] = 1;
 	p->setWidth(1);
 	p->setHeight(4);
+	
 	return p;
 }
 
@@ -34,7 +37,7 @@ static shared_ptr<GameShape> makeSShape()
 	p->setWidth(3);
 	p->setHeight(2);
 	p->shape()[0][1] = 1;
-	p->shape()[0][3] = 1;
+	p->shape()[0][2] = 1;
 	p->shape()[1][0] = 1;
 	p->shape()[1][1] = 1;
 	return p;
@@ -72,8 +75,8 @@ static shared_ptr<GameShape> makeJShape()
 	p->setHeight(3);
 	p->shape()[0][1] = 1;
 	p->shape()[1][1] = 1;
-	p->shape()[2][0] = 1;
 	p->shape()[2][1] = 1;
+	p->shape()[2][0] = 1;
 	return p;
 }
 
@@ -86,7 +89,7 @@ static shared_ptr<GameShape> makeLShape()
 	p->shape()[1][0] = 1;
 	p->shape()[2][0] = 1;
 	p->shape()[2][1] = 1;
-	return 0;
+	return p;
 }
 
 static shared_ptr<GameShape> makeOShape()
@@ -98,13 +101,13 @@ static shared_ptr<GameShape> makeOShape()
 	p->shape()[0][1] = 1;
 	p->shape()[1][0] = 1;
 	p->shape()[1][1] = 1;
-	return 0;
+	return p;
 }
 
 
 shared_ptr<GameShape> Producer::getGameShape(int shape)
 {
-	//int shape = rand() % 7;
+	qDebug() << "shape in getGameShape" << shape ;
 	switch(shape)
 	{
 		case GameShape::IShape: return makeIShape();
@@ -113,9 +116,15 @@ shared_ptr<GameShape> Producer::getGameShape(int shape)
 		case GameShape::JShape: return makeJShape();
 		case GameShape::LShape: return makeLShape();
 		case GameShape::OShape: return makeOShape();
+		case GameShape::TShape: return makeTShape();
 	}
 	assert(false);
 	return make_shared<GameShape>();
+}
+
+int Producer::gameShape()
+{
+	return rand() % 7;
 }
 
 

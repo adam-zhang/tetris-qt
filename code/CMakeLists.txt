@@ -1,10 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project (qt4-test)
 set(CMAKE_BUILD_TYPE Release)
-#set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 find_package (Qt4 REQUIRED)
-#link_directories($ENV{QT4}/lib)
 set(sources main.cpp
 	MainWindow.cpp
 	MainWidget.cpp
@@ -17,12 +15,12 @@ set(sources main.cpp
 	LogicalLayer/Producer.cpp
 	LogicalLayer/Game.cpp
 	)
-set(moc_headers MainWindow.h
+set(moc_headers 
+	MainWindow.h
 	MainWidget.h
 	GameWidget.h
 	InformationWidget.h
 	AboutDialog.h
-	LogicalLayer/Game.h
 	)
 set(headers ${moc_headers})
 QT4_WRAP_CPP(mocs ${moc_headers})

@@ -37,7 +37,6 @@ void MainWidget::createWidgets()
 	splitter->addWidget(informationWidget_);
 	auto handle = splitter->handle(1);
 	handle->setDisabled(true);
-	splitter->setHandleWidth(1);
 	splitter->setStretchFactor(1, 100);
 	layout->addWidget(splitter);
 }

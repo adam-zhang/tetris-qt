@@ -35,6 +35,7 @@ class MainWindow : public QMainWindow
 		void moveLeft();
 		void moveRight();
 		void startGame();
+		void stopGame();
 	private:
 		QTimer* timer_;
 		MainWidget* mainWidget_;
