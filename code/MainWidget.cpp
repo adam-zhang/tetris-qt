@@ -1,7 +1,7 @@
 #include "MainWidget.h"
 #include "GameWidget.h"
 #include "InformationWidget.h"
-#include "LogicalLayer/Game.h"
+//#include "LogicalLayer/Game.h"
 #include <QHBoxLayout>
 #include <QTextEdit>
 #include <QSplitter>

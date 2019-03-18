@@ -1,7 +1,7 @@
 #include "MainWindow.h"
 #include "MainWidget.h"
 #include "AboutDialog.h"
-#include "LogicalLayer/Game.h"
+#include "Game.h"
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QDebug>
@@ -10,7 +10,7 @@
 
 MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent)
-	  , timer_(new QTimer(this))
+	  , game_(new Game(this))
 {
 	initialize();
 }
@@ -26,26 +26,37 @@ void MainWindow::initialize()
 	setCentralWidget(mainWidget_);
 	createMenus();
 	createStatusbar();
+	connect(game_, SIGNAL(gridChanged()), this, SLOT(onGridChnaged()));
+	connect(game_, SIGNAL(candidateChanged()), this, SLOT(onCandidateChanged()));
+}
+
+void MainWindow::onGridChnaged()
+{
+}
+
+void MainWindow::onCandidateChanged()
+{
 }
 
 void MainWindow::startTimer()
 {
-	timer_->setInterval(1000);
-	connect(timer_, SIGNAL(timeout()), this, SLOT(onTimeout()));
-	timer_->start();
+	game_->start();
+	//timer_->setInterval(1000);
+	//connect(timer_, SIGNAL(timeout()), this, SLOT(onTimeout()));
+	//timer_->start();
 }
 
-void MainWindow::onTimeout()
-{
-	Game::instance().update();
-	mainWidget_->updateWindow();
-	qDebug() << "update mainWidget";
-}
+//void MainWindow::onTimeout()
+//{
+//	//Game::instance().update();
+//	mainWidget_->updateWindow();
+//	qDebug() << "update mainWidget";
+//}
 
 void MainWindow::startGame()
 {
-	Game::instance().run();
-	startTimer();
+	//Game::instance().run();
+	//startTimer();
 }
 
 
@@ -116,7 +127,12 @@ void MainWindow::onStopGame()
 
 void MainWindow::stopGame()
 {
-	timer_->stop();
+	game_->stop();
+}
+
+void MainWindow::pauseGame()
+{
+	game_->pause();
 }
 
 void MainWindow::createFileMenu()
@@ -132,24 +148,24 @@ void MainWindow::createStatusbar()
 
 void MainWindow::rotate()
 {
-	Game::instance().rotate();
+	game_->rotate();
 	qDebug() << "rotate";
 }
 
 void MainWindow::speed()
 {
-	Game::instance().speed();
+	game_->speed();
 	qDebug() << "speed";
 }
 
 void MainWindow::moveLeft()
 {
-	Game::instance().moveLeft();
+	game_->moveLeft();
 	qDebug() << "moveLeft";
 }
 
 void MainWindow::moveRight()
 {
-	Game::instance().moveRight();
+	game_->moveRight();
 	qDebug() << "moveRight";
 }

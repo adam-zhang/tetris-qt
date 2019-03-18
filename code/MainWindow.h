@@ -3,8 +3,9 @@
 
 #include <QMainWindow>
 
-class QTimer;
+//class QTimer;
 class MainWidget;
+class Game;
 
 class MainWindow : public QMainWindow
 {
@@ -23,10 +24,12 @@ class MainWindow : public QMainWindow
 		void createGameMenu();
 		void startTimer();
 	private slots:
-		void onTimeout();
+		//void onTimeout();
 		void onStartGame();
 		void onStopGame();
 		void onAbout();
+		void onCandidateChanged();
+		void onGridChnaged();
 	protected:
 		virtual void keyPressEvent(QKeyEvent*);
 	private:
@@ -36,8 +39,10 @@ class MainWindow : public QMainWindow
 		void moveRight();
 		void startGame();
 		void stopGame();
+		void pauseGame();
 	private:
-		QTimer* timer_;
+	//	QTimer* timer_;
 		MainWidget* mainWidget_;
+		Game* game_;
 };
 #endif//__MAINWINDOW__H

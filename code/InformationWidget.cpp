@@ -1,6 +1,6 @@
 #include "InformationWidget.h"
 #include "WindowAssistant.h"
-#include "LogicalLayer/Game.h"
+//#include "LogicalLayer/Game.h"
 #include "LogicalLayer/Producer.h"
 #include "Painter.h"
 #include "Next.h"

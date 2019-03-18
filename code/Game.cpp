@@ -1,11 +1,12 @@
 #include "Game.h"
-#include "Producer.h"
+#include "LogicalLayer/Producer.h"
 #include <QTimer>
 #include <QDebug>
 #include <stdlib.h>
 #include <time.h>
 
-Game::Game()
+Game::Game(QObject* parent)
+	: QObject(this)
 {
 	srand((int)time(0));
 }
@@ -14,11 +15,18 @@ Game::~Game()
 {
 }
 
-void Game::run()
+//void Game::run()
+//{
+//	//timer_->start();
+//	setCandidate(getShape());
+//	setCurrent(getShape());
+//}
+void Game::start()
 {
-	//timer_->start();
-	setCandidate(getShape());
-	setCurrent(getShape());
+}
+
+void Game::pause()
+{
 }
 
 int Game::getShape()
@@ -28,12 +36,19 @@ int Game::getShape()
 
 void Game::stop()
 {
-	//timer_->stop();
+	timer_->stop();
+	cleanGrid();
 }
 
-//void Game::onTimeout()
-//{
-//}
+
+void Game::cleanGrid()
+{
+
+}
+
+void Game::onTimeout()
+{
+}
 
 void Game::rotate()
 {
