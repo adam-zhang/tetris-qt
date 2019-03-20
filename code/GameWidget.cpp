@@ -1,10 +1,14 @@
 #include "GameWidget.h"
 #include "WindowAssistant.h"
+#include "Game.h"
+#include "Painter.h"
+#include "LogicalLayer/GameShape.h"
 #include <QDebug>
-#include <QMessageBox>
 #include <QPaintEvent>
 #include <QPainter>
-#include <QPalette>
+#include <memory>
+
+using namespace std;
 
 GameWidget::GameWidget(QWidget* parent)
 	: QWidget(parent)
@@ -19,10 +23,10 @@ GameWidget::~GameWidget()
 void GameWidget::initialize()
 {
 	WindowAssistant::setBackgroundColor(this, Qt::black);
-	setGeometry(0, 0, 200, 175);
+	setGeometry(0, 0, Game::instance().row() * 20, Game::instance().column() * 20);
 }
 
-void paintGrid(QPainter& painter, const QRect& rect)
+static void paintGrid(QPainter& painter, const QRect& rect)
 {
 	QPen pen(Qt::white);
 	painter.setPen(pen);
@@ -33,12 +37,29 @@ void paintGrid(QPainter& painter, const QRect& rect)
 
 }	
 
+static void paintShape(QPainter& painter, const shared_ptr<GameShape>& shape)
+{
+	Painter::paintShape(painter, shape);
+}
+
 void GameWidget::paintEvent(QPaintEvent* event)
 {
 	QPainter painter(this);
 	paintGrid(painter, event->rect());
+	fillGrid(painter, Game::instance().boxMap());
+	qDebug() << "check currentShape";
+	if (Game::instance().currentShape())
+	{
+		paintShape(painter, Game::instance().currentShape());
+		qDebug() << "paintShape in GameWidget";
+	}
+}
+
+void GameWidget::fillGrid(QPainter& painter, const BoxMap& box)
+{
 }
 
 void GameWidget::updateWindow()
 {
+	update();
 }

@@ -2,6 +2,7 @@
 #define __PAINTER__H
 
 #include <memory>
+#include "tools/tool.h"
 
 class GameShape;
 class QPainter;
@@ -13,5 +14,6 @@ private:
 	~Painter();
 public:
 	static void paintShape(QPainter&, const std::shared_ptr<GameShape>&);
+	static void paintGrid(QPainter&, const BoxMap&);
 };
 #endif//__PAINTER__H

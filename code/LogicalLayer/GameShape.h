@@ -22,6 +22,8 @@ public:
 
 	PROPERTY(int, width, setWidth);
 	PROPERTY(int, height, setHeight );
+	PROPERTY(int, x, setX);
+	PROPERTY(int, y, sexY);
 	private:
 		Shape shape_;
 	public:

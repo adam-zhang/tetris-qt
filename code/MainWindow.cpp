@@ -10,7 +10,7 @@
 
 MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent)
-	  , game_(new Game(this))
+	  //, game_(new Game(this))
 {
 	initialize();
 }
@@ -22,16 +22,17 @@ MainWindow::~MainWindow()
 void MainWindow::initialize()
 {
 	setWindowFlags(windowFlags() &~ Qt::WindowMinMaxButtonsHint);
-	mainWidget_ = new MainWidget;
+	mainWidget_ = new MainWidget(this);
 	setCentralWidget(mainWidget_);
 	createMenus();
 	createStatusbar();
-	connect(game_, SIGNAL(gridChanged()), this, SLOT(onGridChnaged()));
-	connect(game_, SIGNAL(candidateChanged()), this, SLOT(onCandidateChanged()));
+	connect(&Game::instance(), SIGNAL(gridChanged()), this, SLOT(onGridChnaged()));
+	connect(&Game::instance(), SIGNAL(candidateChanged()), this, SLOT(onCandidateChanged()));
 }
 
 void MainWindow::onGridChnaged()
 {
+	mainWidget_->refreshGrid();
 }
 
 void MainWindow::onCandidateChanged()
@@ -40,10 +41,7 @@ void MainWindow::onCandidateChanged()
 
 void MainWindow::startTimer()
 {
-	game_->start();
-	//timer_->setInterval(1000);
-	//connect(timer_, SIGNAL(timeout()), this, SLOT(onTimeout()));
-	//timer_->start();
+	Game::instance().start();
 }
 
 //void MainWindow::onTimeout()
@@ -55,8 +53,7 @@ void MainWindow::startTimer()
 
 void MainWindow::startGame()
 {
-	//Game::instance().run();
-	//startTimer();
+	Game::instance().start();
 }
 
 
@@ -79,6 +76,12 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
 		case Qt::Key_Right:
 		case Qt::Key_D:
 			moveRight();
+			break;
+		case Qt::Key_Space:
+			pauseGame();
+			break;
+		case Qt::Key_Escape:
+			close();
 			break;
 	};
 }
@@ -127,12 +130,12 @@ void MainWindow::onStopGame()
 
 void MainWindow::stopGame()
 {
-	game_->stop();
+	//game_->stop();
 }
 
 void MainWindow::pauseGame()
 {
-	game_->pause();
+	//game_->pause();
 }
 
 void MainWindow::createFileMenu()
@@ -148,24 +151,35 @@ void MainWindow::createStatusbar()
 
 void MainWindow::rotate()
 {
-	game_->rotate();
+	//game_->rotate();
 	qDebug() << "rotate";
 }
 
 void MainWindow::speed()
 {
-	game_->speed();
+	//game_->speed();
 	qDebug() << "speed";
 }
 
 void MainWindow::moveLeft()
 {
-	game_->moveLeft();
+	//game_->moveLeft();
 	qDebug() << "moveLeft";
 }
 
 void MainWindow::moveRight()
 {
-	game_->moveRight();
+	//game_->moveRight();
 	qDebug() << "moveRight";
 }
+
+int MainWindow::row()
+{
+	return Game::instance().row();
+}
+
+int MainWindow::column()
+{
+	return Game::instance().column();
+}
+

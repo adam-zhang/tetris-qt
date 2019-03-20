@@ -14,6 +14,8 @@ class MainWindow : public QMainWindow
 		MainWindow(QWidget* parent = 0);
 		~MainWindow();
 	public:
+		int row();
+		int column();
 	private:
 		void initialize();
 		void createMenus();
@@ -24,7 +26,6 @@ class MainWindow : public QMainWindow
 		void createGameMenu();
 		void startTimer();
 	private slots:
-		//void onTimeout();
 		void onStartGame();
 		void onStopGame();
 		void onAbout();
@@ -41,8 +42,8 @@ class MainWindow : public QMainWindow
 		void stopGame();
 		void pauseGame();
 	private:
-	//	QTimer* timer_;
 		MainWidget* mainWidget_;
-		Game* game_;
+		//Game* game_;
+
 };
 #endif//__MAINWINDOW__H

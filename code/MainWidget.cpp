@@ -1,7 +1,7 @@
 #include "MainWidget.h"
+#include "MainWindow.h"
 #include "GameWidget.h"
 #include "InformationWidget.h"
-//#include "LogicalLayer/Game.h"
 #include <QHBoxLayout>
 #include <QTextEdit>
 #include <QSplitter>
@@ -28,7 +28,8 @@ void MainWidget::initialize()
 
 void MainWidget::createWidgets()
 {
-	setFixedSize(20 * 10 + 100, 20 * 18);
+	auto parent = static_cast<MainWindow*>(parentWidget());
+	setFixedSize(parent->row() * 20 + 100, parent->column() * 20);
 	auto layout = new QHBoxLayout(this);
 	auto splitter = new QSplitter;
 	gameWidget_ = new GameWidget;
@@ -44,5 +45,10 @@ void MainWidget::createWidgets()
 void MainWidget::updateWindow()
 {
 	informationWidget_->updateWindow();
+	gameWidget_->updateWindow();
+}
+
+void MainWidget::refreshGrid()
+{
 	gameWidget_->updateWindow();
 }
